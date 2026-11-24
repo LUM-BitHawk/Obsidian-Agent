@@ -244,11 +244,16 @@ Folgende Zeile ergänzen (Pfad anpassen):
        └── Archiv/Tagesuebersicht_JJJJ-MM-TT.md
    ```
 
-4. Erstes Projekt anlegen unter **Projekte** – es erhält automatisch die Standardstruktur `01_Vertraege_und_SLA` bis `10_Korrespondenz` und eine Übersichtsnotiz `_Projekt_<Name>.md`.
+4. Erstes Projekt anlegen unter **Projekte**. Es erhält automatisch die Standardstruktur `01_Vertraege_und_SLA` bis `10_Korrespondenz` (inkl. `07_DevOps`) und eine Übersichtsnotiz `_Projekt_<Name>.md`. Bestehende Projekte aus einer älteren Version ergänzt du mit **„Alle Projekte ergänzen“**.
+   Notizen aus Vorlagen legst du unter **Aus Vorlage** an: Vorlage, Projekt und Ordner wählen. Eigene Vorlagen legst du einfach als `.md` in `_Vorlagen/` ab.
 5. Beim Anlegen eines Tasks mit Projekt erscheint die Auswahl **Ordner im Projekt**. Sie zeigt alle Unterordner des Projekts. Ordner, die du in Obsidian von Hand anlegst, sind sofort dabei, ohne Sync. Tasks, die schon im Vault liegen, kannst du in Obsidian einfach in einen anderen Ordner verschieben. Der Agent findet sie beim nächsten Sync.
-6. Optional: Unter **Wiki** die Kategorien anlegen (Formular *Neue Kategorie*) und unter **Jour Fixe** die erste Sitzung einer Serie anlegen. Dabei entsteht die Serie.
+6. **Projektaufgaben:** Unter *Projektaufgaben* einen Projektplan anlegen: Projekt, Titel, Deadline, Ziel und Phasen mit Aufgaben. Jede Aufgabe wird als Task angelegt (ohne Datum bis zur Deadline fällig). Häkchen kannst du in der Oberfläche, im Plan in Obsidian oder im Task setzen, der Agent gleicht sie ab. Der Status jeder Phase wird automatisch nachgeführt (alle erledigt → *erledigt*, begonnen → *in Arbeit*) und lässt sich auch von Hand setzen, z.B. *wartend*. Mit **✉ Status** (eine Phase) oder **✉ Gesamtstatus** (alle Phasen) entsteht ein E-Mail-Entwurf für Outlook an die verantwortlichen Personen.
+7. **Projektprotokoll:** Protokoll erfassen, es wird unter `06_Projekte` abgelegt (einstellbar unter *Einstellungen*). Jede ausgefüllte Aufgabe wird automatisch als Task im selben Ordner angelegt. Ohne Datum ist sie bis zum nächsten Treffen fällig, sonst in 7 Tagen. Mit **✉ Outlook** öffnet sich ein E-Mail-Entwurf (.eml) mit formatiertem Protokoll. Damit die Empfänger automatisch eingetragen werden, bei den **Teammitgliedern** die E-Mail-Adressen hinterlegen. Beim ersten Mal fragt der Browser eventuell, womit `.eml`-Dateien geöffnet werden sollen: **Outlook** wählen und „Immer öffnen“ aktivieren.
+8. Optional: Unter **Wiki** die Kategorien anlegen (Formular *Neue Kategorie*) und unter **Jour Fixe** die erste Sitzung einer Serie anlegen. Dabei entsteht die Serie.
 
 > 💡 Jeder Titel in der Oberfläche ist ein `obsidian://`-Link und öffnet die Notiz direkt in Obsidian.
+
+> 📅 **Datumseingabe:** Alle Datumsfelder verwenden das Format **TT/MM/JJJJ**, unabhängig von der Sprache des Browsers. Du kannst tippen (`24/12/2026`, `24.12.2026`, `24122026` oder kurz `3/1/27`) oder über den Kalender-Button wählen. Ungültige Daten wie `31/02/2026` werden vor dem Speichern abgefangen. In den Markdown-Dateien wird das Datum weiterhin als `2026-12-24` gespeichert. Diese Form verstehen Obsidian und Plugins wie Dataview.
 
 ### Task-Format
 
@@ -310,6 +315,8 @@ Die Datei entsteht beim ersten Start im Programmordner und lässt sich auch übe
 | `task_ordner` | `Tasks` | Tasks ohne Projekt |
 | `wiki_ordner`, `lcm_ordner`, `notiz_ordner`, `devops_ordner`, `ideen_ordner`, `team_ordner`, `jourfixe_ordner`, `planer_ordner`, `vorlagen_ordner` | siehe Kapitel 6 | Ordnernamen im Vault |
 | `task_standard_ordner` | *(leer)* | Unterordner, der beim Anlegen eines Tasks im Projekt vorgewählt ist, z. B. `06_Projekte`. Leer bedeutet: Projektordner (oberste Ebene). Fehlt der Ordner in einem Projekt, gilt ebenfalls die oberste Ebene. |
+| `protokoll_ordner` | `06_Projekte` | Ordner im Projekt für Projektprotokolle und die daraus erzeugten Tasks |
+| `plan_ordner` | `06_Projekte` | Ordner im Projekt für Projektpläne (Projektaufgaben) und ihre Tasks |
 | `sync_zeit` | `04:00` | Zeit des täglichen Syncs |
 | `lcm_warnung_tage` | `90` | Vorwarnzeit für EOS/EOL im LifeCycle |
 | `demnaechst_tage` | `7` | Zeitraum für „Demnächst“ |
